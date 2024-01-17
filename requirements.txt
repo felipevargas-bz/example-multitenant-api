@@ -1,0 +1,9 @@
+flask
+sqlalchemy
+flask-jwt-extended
+marshmallow-sqlalchemy
+flask-sqlalchemy
+flask-cors
+pymysql
+python-dotenv
+requests
