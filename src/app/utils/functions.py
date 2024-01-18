@@ -24,17 +24,10 @@ def user_lookup_callback(_jwt_header, jwt_data):
     """callback for fetching authenticated user from db"""
     try:
         username = jwt_data["sub"]["username"]
-        g.pymes_plus_token = jwt_data["sub"]["pymes_plus_token"]
 
         if username == AUTOMATIC_PROCESS_USERNAME:
             return jwt_data["sub"]
-        entity = (
-            admin
-            if (admin := g.session.query(Admin).filter(Admin.username == username).first())
-            else g.session.query(CustomerUser)
-            .filter(CustomerUser.username == username)
-            .first()
-        )
+        entity = g.session.query(User).filter(User.username == username).first()
         g.current_user = entity
         return entity
     except OperationalError as e:
@@ -52,7 +45,7 @@ def check_access(roles: tuple = ()):
                 # calling @jwt_required()
                 verify_jwt_in_request()
                 # fetching current user from db
-                current_user: Union[Admin, CustomerUser, dict] = get_current_user()
+                current_user = get_current_user()
                 role = (
                     current_user["role"]
                     if isinstance(current_user, dict)

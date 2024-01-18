@@ -28,10 +28,20 @@ def get_user(user_id):
 
 
 @api.route("/users/", methods=["POST"])
-@check_access(("Admin",))
 def create_users():
     data_to_process = request.json
     user_service.create(data_to_process)
+    return CustomResponse.send_response(
+        data={"created": "Registro creado correctamente."},
+        status_code=201,
+    )
+
+
+@api.route("/users/admin/", methods=["POST"])
+@check_access(("AutomaticProcess",))
+def create_admin_users():
+    data_to_process = request.json
+    user_service.create_admin_user(data_to_process)
     return CustomResponse.send_response(
         data={"created": "Registro creado correctamente."},
         status_code=201,

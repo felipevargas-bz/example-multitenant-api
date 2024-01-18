@@ -15,4 +15,4 @@ class User(BaseModel):
     email = db.Column(db.String(255), nullable=False)
     username = db.Column(db.String(255), nullable=False, unique=True)
     password = db.Column(db.String(255), nullable=False)
-    role = db.Column(db.String(50), nullable=False, server_default="Admin")
+    role = db.Column(db.String(50), nullable=False, server_default="User")

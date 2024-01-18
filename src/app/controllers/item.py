@@ -21,7 +21,7 @@ def get_items():
 
 
 @api.route("/items/<int:item_id>", methods=["GET"])
-@check_access(("Admin",))
+@check_access(("Admin", "User"))
 def get_item(item_id):
     response = item_service.get_by_id(item_id)
     return CustomResponse.send_response(data=response)

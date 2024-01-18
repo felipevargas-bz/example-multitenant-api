@@ -30,6 +30,10 @@ class AuthService:
         if not (username and password):
             raise EmptyCredentialsError("Usuario y/o contraseña vacíos.")
 
+        auto_process_user = username == AUTOMATIC_PROCESS_USERNAME
+        if auto_process_user:
+            return self.login_auto_process_user(username, password)
+
         # Check if the user exists
         user_db = g.session.query(User).filter(User.username == username).first()
 
@@ -66,6 +70,31 @@ class AuthService:
         response = {"access_token": access_token}
 
         return response
+
+    @staticmethod
+    def login_auto_process_user(username, password):
+        """
+        Login for automatic process user, automatic process user is a reserved user to other services that need to
+        execute automatic tasks without the need of a human user.
+
+        :param username: The username of the automatic process user
+        :param password: The password of the automatic process user
+        :return:  A response object containing the automatic process user's data and a JWT token
+        """
+        # Check if the password and username are correct
+        if not (
+                username == AUTOMATIC_PROCESS_USERNAME
+                and password == AUTOMATIC_PROCESS_PASSWORD
+        ):
+            raise InvalidCredentialsError("Usuario y/o contraseña incorrectos.")
+
+        useful_data = {
+            "username": username,
+            "role": "AutomaticProcess",
+        }
+
+        access_token = create_access_token(identity=useful_data)
+        return {"access_token": access_token, "role": "AutomaticProcess"}
 
 
 auth_service = AuthService()
