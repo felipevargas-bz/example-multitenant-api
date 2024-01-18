@@ -87,8 +87,9 @@ class BaseService:
                 query = self.make_query(op, attribute, value, query)
 
             result = query.first()
+            dict_format_result = self.schema().dump(result)
 
-            return self.schema().dump(result) if dict_format else result
+            return dict_format_result if dict_format else result
 
         except OperationalError as e:
             raise MySQLConnectionError(str(e))

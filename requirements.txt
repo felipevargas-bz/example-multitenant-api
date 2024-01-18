@@ -7,3 +7,4 @@ flask-cors
 pymysql
 python-dotenv
 requests
+cryptography

@@ -15,10 +15,6 @@ class DatabaseService:
         pass
 
     @staticmethod
-    def start_database():
-        db_service.create_tables()
-
-    @staticmethod
     def create_tables():
         Base.metadata.create_all(g.engine)
 
