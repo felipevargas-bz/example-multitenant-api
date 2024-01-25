@@ -1,0 +1,413 @@
+{
+	"info": {
+		"_postman_id": "f89f3a6c-1285-424d-878a-c91fdb85aa0a",
+		"name": "example-multitenant-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "27631631"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "Crear Usuario Admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN}}"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "tenant",
+								"value": "{{tenant}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Felipe Vargas\",\n  \"email\": \"test@example.com\",\n  \"username\": \"felipe\",\n  \"password\": \"Admin*2\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{HOST}}/api/users/admin/"
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Usuarios",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "tenant",
+								"value": "{{tenant}}",
+								"type": "text"
+							}
+						],
+						"url": "{{HOST}}/api/users"
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Usuario",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "tenant",
+								"value": "{{tenant}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"usuario\",\n  \"email\": \"test@example.com\",\n  \"username\": \"usuario\",\n  \"password\": \"usuario*2\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{HOST}}/api/users/"
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Usuario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN}}"
+							}
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "tenant",
+								"value": "{{tenant}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Felipe Vargas\",\n  \"email\": \"test1@example.com\",\n  \"username\": \"felipe2\",\n  \"password\": \"Admin*24\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{HOST}}/api/users/1/"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Usuario por id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "tenant",
+								"value": "{{tenant}}",
+								"type": "text"
+							}
+						],
+						"url": "{{HOST}}/api/users/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Usuario por id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "tenant",
+								"value": "{{tenant}}",
+								"type": "text"
+							}
+						],
+						"url": "{{HOST}}/api/users/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "item",
+			"item": [
+				{
+					"name": "Crear Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN}}"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "tenant",
+								"value": "{{tenant}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Producto Ejemplo\",\n  \"description\": \"Descripción del producto de ejemplo\",\n  \"price\": 29.99,\n  \"stock\": 100,\n  \"image\": \"ruta/imagen_ejemplo.jpg\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{HOST}}/api/items/"
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN}}"
+							}
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "tenant",
+								"value": "{{tenant}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Producto Ejemplo2\",\n  \"description\": \"Descripción del producto de ejemplo2\",\n  \"price\": 1.99,\n  \"stock\": 23,\n  \"image\": \"ruta/imagen_ejemplo2.jpg\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{HOST}}/api/items/1/"
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "tenant",
+								"value": "{{tenant}}",
+								"type": "text"
+							}
+						],
+						"url": "{{HOST}}/api/items/1/"
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Items",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "tenant",
+								"value": "{{tenant}}",
+								"type": "text"
+							}
+						],
+						"url": "{{HOST}}/api/items"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener item por id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "tenant",
+								"value": "{{tenant}}",
+								"type": "text"
+							}
+						],
+						"url": "{{HOST}}/api/items/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Iniciar sesión",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"pm.collectionVariables.set(\"TOKEN\", jsonData.data.access_token);\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "tenant",
+						"value": "{{tenant}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n//     // Automatic Process auth data\r\n//    \"username\": \"CryptoMaster42\",\r\n//    \"password\": \"J$!kLp#9wZa@\"\r\n    \"username\": \"felipe\",\r\n    \"password\": \"Admin*2\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{HOST}}/auth/login/"
+			},
+			"response": []
+		},
+		{
+			"name": "Crear tablas",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{TOKEN}}"
+					}
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "tenant",
+						"value": "{{tenant}}",
+						"type": "text"
+					}
+				],
+				"url": "{{HOST}}/api/create_tables"
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Tablas",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{TOKEN}}"
+					}
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "tenant",
+						"value": "{{tenant}}",
+						"type": "text"
+					}
+				],
+				"url": "{{HOST}}/api/drop_tables"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "HOST",
+			"value": "http://localhost:5590",
+			"type": "string"
+		},
+		{
+			"key": "tenant",
+			"value": "123456789",
+			"type": "string"
+		},
+		{
+			"key": "TOKEN",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
