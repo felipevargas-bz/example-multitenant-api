@@ -4,7 +4,7 @@
 ## Tablas de Datos
 
 ### 1. **tenantTable**:
-Almacena detalles de cada inquilino con campos como identificación, token, email, nombre de la empresa, entre otros.
+Almacena detalles de cada (tenant) con campos como identificación, token, email, nombre de la empresa, entre otros.
 
 **Ejemplo de registro en DynamoDB:**
 ```json
