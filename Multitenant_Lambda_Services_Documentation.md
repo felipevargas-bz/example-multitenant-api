@@ -4,7 +4,7 @@
 ## Tablas de Datos
 
 ### 1. **tenantTable**: 
-Esta tabla almacena información detallada sobre cada inquilino (tenant). Cada registro incluye información como ID de inquilino, token, correo electrónico, nombre de la empresa, zona horaria, y más.
+Esta tabla almacena información detallada sobre cada  (tenant). Cada registro incluye información como ID de tenant, token, correo electrónico, nombre de la empresa, zona horaria, y más.
    
 **Ejemplo de registro:**
 ```json
