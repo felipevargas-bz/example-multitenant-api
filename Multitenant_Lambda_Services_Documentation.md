@@ -1,5 +1,5 @@
 
-# Documentación Ampliada de Servicios Lambda Multitenant
+# Servicios Lambda Multitenant
 
 ## Tablas de Datos
 
